@@ -14,6 +14,9 @@ func TestNew(t *testing.T) {
 	{
 		var x string
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = "foo"
 		p = New(x)
@@ -27,6 +30,9 @@ func TestNew(t *testing.T) {
 	{
 		var x int
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = 5
 		p = New(x)
@@ -40,6 +46,9 @@ func TestNew(t *testing.T) {
 	{
 		var x uint64
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = 5434892638576219563
 		p = New(x)
@@ -53,6 +62,9 @@ func TestNew(t *testing.T) {
 	{
 		var x float64
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = 45.99
 		p = New(x)
@@ -66,6 +78,9 @@ func TestNew(t *testing.T) {
 	{
 		var x complex128
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = complex(10, 11)
 		p = New(x)
@@ -81,6 +96,8 @@ func TestNew(t *testing.T) {
 		p := New(x)
 		assert.NotNil(t, p, testName(x))
 		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
+		assert.Nil(t, p, testName(x))
 		x = false
 		p = New(x)
 		assert.NotNil(t, p, testName(x))
@@ -93,6 +110,9 @@ func TestNew(t *testing.T) {
 	{
 		var x time.Time
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = time.Now()
 		p = New(x)
@@ -106,6 +126,9 @@ func TestNew(t *testing.T) {
 	{
 		var x time.Duration
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = 5 * time.Minute
 		p = New(x)
@@ -119,6 +142,9 @@ func TestNew(t *testing.T) {
 	{
 		var x error
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = errors.New("foo")
 		p = New(x)
@@ -132,6 +158,9 @@ func TestNew(t *testing.T) {
 	{
 		var x rune
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = rune('ç')
 		p = New(x)
@@ -145,6 +174,9 @@ func TestNew(t *testing.T) {
 	{
 		var x byte
 		p := New(x)
+		assert.NotNil(t, p, testName(x))
+		assert.Equal(t, x, *p, testName(x))
+		p = New(x, Nilify)
 		assert.Nil(t, p, testName(x))
 		x = byte('[')
 		p = New(x)
