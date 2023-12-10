@@ -1,6 +1,25 @@
 # Pointers package
 
-Golang pointer helpers.
+Golang pointer helper.
+
+
+## Example
+
+```go
+import "pointers"
+
+p := pointers.New(25)
+
+if *p == 25 {
+    fmt.Printf("p is a pointer to int %d\n", 25)
+}
+```
+
+## Installation
+
+```bash
+go get github.com/roninzo/pointers
+```
 
 ## Documentation
 
@@ -20,6 +39,15 @@ PASS
 coverage: 100.0% of statements
 ok      github.com/roninzo/pointers     1.250s  coverage: 100.0% of statements
 ```
+
+## Articles
+
+- [Using generics to get a pointer to any type, in Go](https://www.jvt.me/posts/2022/07/29/go-pointer-generic/)
+
+## Alternatives
+
+- https://github.com/xorcare/pointer
+- https://github.com/carlmjohnson/new
 
 ## License
 

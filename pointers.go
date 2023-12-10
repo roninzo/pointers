@@ -1,45 +1,191 @@
 package pointers
 
-const Nilify bool = true   // New sets to nil when input is zero value.
-var AlwaysNilify = !Nilify // Controls default behaviour for func New.
+import (
+	"reflect"
+	"time"
+)
 
-// New returns a pointer to any value x.
-//
-//	p := pointers.New(13)
-//
-// is like a convenient one-liner equivalent of the following 2 lines
-// of code:
-//
-//	i := 13
-//	p := &i
-//
-// The added value of New is merely to provide a simple helper to do the
-// above operations all in one assignment. If your program needs this a
-// lot, it could simplify and make your code more readable.
-//
-// When x is zero value, New still returns a pointer to x by default.
-// To return nil instead, there are 2 ways to achieve this:
-//
-// Method 1:
-// Pass an extra bool argument true or pointers.Nilify.
-// Example:
-//
-//	p := pointers.New(0) // => &int(0)
-//	p = pointers.New(0, pointers.Nilify)  // => nil
-//
-// Method 2:
-// Overwrite AlwaysNilify value to true or pointers.Nilify before using New.
-// Example:
-//
-//	p := pointers.New(0) // => &int(0)
-//	pointers.AlwaysNilify = pointers.Nilify
-//	p = pointers.New(0) // => nil
-func New[T comparable](x T, opts ...bool) *T {
-	nilify := AlwaysNilify
-	if len(opts) > 0 {
-		nilify = opts[0]
+// Any returns a pointer to interface{} value x.
+func Any(x interface{}, opts ...bool) interface{} {
+	if nilify(x, opts...) {
+		return nil
 	}
-	if nilify && x == *new(T) {
+	r := reflect.New(reflect.TypeOf(x))
+	reflect.ValueOf(r.Interface()).Elem().Set(reflect.ValueOf(x))
+	return r.Interface()
+}
+
+// Bool returns a pointer to bool value x.
+func Bool(x bool, opts ...bool) *bool {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Byte returns a pointer to byte value x.
+func Byte(x byte, opts ...bool) *byte {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Bytes returns a pointer to []byte value x.
+func Bytes(x []byte, opts ...bool) *[]byte {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Int returns a pointer to int value x.
+func Int(x int, opts ...bool) *int {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Int8 returns a pointer to int8 value x.
+func Int8(x int8, opts ...bool) *int8 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Int16 returns a pointer to int16 value x.
+func Int16(x int16, opts ...bool) *int16 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Int32 returns a pointer to int32 value x.
+func Int32(x int32, opts ...bool) *int32 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Int64 returns a pointer to int64 value x.
+func Int64(x int64, opts ...bool) *int64 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Uint returns a pointer to uint value x.
+func Uint(x uint, opts ...bool) *uint {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Uint8 returns a pointer to uint8 value x.
+func Uint8(x uint8, opts ...bool) *uint8 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Uint16 returns a pointer to uint16 value x.
+func Uint16(x uint16, opts ...bool) *uint16 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Uint32 returns a pointer to uint32 value x.
+func Uint32(x uint32, opts ...bool) *uint32 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Uint64 returns a pointer to uint64 value x.
+func Uint64(x uint64, opts ...bool) *uint64 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Uintptr returns a pointer to uintptr value x.
+func Uintptr(x uintptr, opts ...bool) *uintptr {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Float32 returns a pointer to float32 value x.
+func Float32(x float32, opts ...bool) *float32 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Float64 returns a pointer to float64 value x.
+func Float64(x float64, opts ...bool) *float64 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Complex64 returns a pointer to complex64 value x.
+func Complex64(x complex64, opts ...bool) *complex64 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Complex128 returns a pointer to complex128 value x.
+func Complex128(x complex128, opts ...bool) *complex128 {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// String returns a pointer to string value x.
+func String(x string, opts ...bool) *string {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Rune returns a pointer to rune value x.
+func Rune(x rune, opts ...bool) *rune {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Time returns a pointer to type value x.
+func Time(x time.Time, opts ...bool) *time.Time {
+	if nilify(x, opts...) {
+		return nil
+	}
+	return &x
+}
+
+// Duration returns a pointer to time.Duration value x.
+func Duration(x time.Duration, opts ...bool) *time.Duration {
+	if nilify(x, opts...) {
 		return nil
 	}
 	return &x
