@@ -1,12 +1,7 @@
 package pointers
 
-const (
-	Nilify bool = true // New sets to nil when input is zero value.
-)
-
-var (
-	AlwaysNilify = !Nilify // Controls default behaviour for func New.
-)
+const Nilify bool = true   // New sets to nil when input is zero value.
+var AlwaysNilify = !Nilify // Controls default behaviour for func New.
 
 // New returns a pointer to any value x.
 //

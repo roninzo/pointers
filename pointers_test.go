@@ -9,6 +9,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// NOTE: The different data types use cases are being tested directly without
+// passing them to interface{}, this test is more verbose than usual.
 func TestNew(t *testing.T) {
 	testName := func(x any) string { return fmt.Sprintf("Test: New(%v)", x) }
 	{
