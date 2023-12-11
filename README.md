@@ -17,6 +17,12 @@ p := pointers.New(25)
 if *p == 25 {
     fmt.Printf("p is a pointer to int %d\n", 25)
 }
+
+p = pointers.New(0, pointers.Nilify)
+
+if p == nil {
+    fmt.Println("p is nil")
+}
 ```
 
 ## Installation
