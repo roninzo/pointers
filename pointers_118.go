@@ -26,16 +26,20 @@ package pointers
 // Pass an extra bool argument true or pointers.Nilify.
 // Example:
 //
-//	p := pointers.New(0) // => &int(0)
-//	p = pointers.New(0, pointers.Nilify)  // => nil
+//	_ = pointers.New(0) // => new(int)
+//	_ = pointers.New(0, pointers.Nilify)  // => nil
 //
 // Method 2:
 // Overwrite AlwaysNilify value to true or pointers.Nilify before using New.
 // Example:
 //
-//	p := pointers.New(0) // => &int(0)
-//	pointers.AlwaysNilify = pointers.Nilify
-//	p = pointers.New(0) // => nil
+//	_ = pointers.New(0)          // => new(int)
+//	_ = pointers.New("")         // => new(string)
+//	_ = pointers.New(float32(0)) // => new(float32)
+//	pointers.AlwaysNilify = true
+//	_ = pointers.New(0)          // => nil
+//	_ = pointers.New("")         // => nil
+//	_ = pointers.New(float32(0)) // => nil
 func New[T comparable](x T, opts ...bool) *T {
 	nilify := AlwaysNilify
 	if len(opts) > 0 {
