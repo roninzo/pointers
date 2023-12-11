@@ -1,6 +1,7 @@
 package pointers
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 	"time"
@@ -95,6 +96,8 @@ func TestAny(t *testing.T) {
 	assert.Equal(t, struct{}{}, *Any(struct{}{}).(*struct{}), testName(f, struct{}{}))
 	assert.Equal(t, reflect.Method{}, *Any(reflect.Method{}).(*reflect.Method), testName(f, reflect.Method{}))
 	assert.Equal(t, reflect.Method{Name: "name"}, *Any(reflect.Method{Name: "name"}).(*reflect.Method), testName(f, reflect.Method{Name: "name"}))
+	var stringer fmt.Stringer
+	assert.Nil(t, Any(stringer, Nilify), testName(f, stringer))
 }
 
 func TestBool(t *testing.T) {
