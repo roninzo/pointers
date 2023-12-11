@@ -5,24 +5,32 @@ Golang pointer helper.
 
 ## Example
 
+main.go:
 ```go
+package main
+
 import (
     "fmt"
     
     "github.com/roninzo/pointers"
 )
 
-p := pointers.New(25)
-
-if *p == 25 {
-    fmt.Printf("p is a pointer to int %d\n", 25)
+func main() {    
+    if p := pointers.New(25); *p == 25 {
+        fmt.Println("p is a pointer to int 25")
+    }
+    if p := pointers.New(0); *p == 0 {
+        fmt.Println("p is a pointer to int 0")
+    }
+    if p := pointers.New(0, pointers.Nilify); p == nil {
+        fmt.Println("p is nil")
+    }
 }
 
-p = pointers.New(0, pointers.Nilify)
-
-if p == nil {
-    fmt.Println("p is nil")
-}
+// Output:
+// p is a pointer to int 25
+// p is a pointer to int 0
+// p is nil
 ```
 
 ## Installation
